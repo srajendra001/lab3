@@ -44,4 +44,54 @@ public class LinkedListTests {
         assertEquals(3, l3.root.next.next.value);
         assertEquals(null, l3.root.next.next.next);
     }
+
+    @Test
+    public void testFirst() {
+        LinkedList l = new LinkedList();
+        assertThrows(Exception.class, () -> {
+            try {
+                l.last();
+            } catch (NoSuchElementException e) {
+                throw new Exception("Expected NoSuchElementException");
+            }
+        });
+        l.prepend(1);
+        assertEquals(1, l.first());
+    }
+
+    @Test
+    public void testLast() {
+        LinkedList l = new LinkedList();
+        assertThrows(Exception.class, () -> {
+            try {
+                l.last();
+            } catch (NoSuchElementException e) {
+                throw new Exception("Expected NoSuchElementException");
+            }
+        });
+        l.prepend(1);
+        assertEquals(1, l.last());
+        l.prepend(2);
+        assertEquals(1, l.last());
+    }
+
+    @Test
+    public void testToString() {
+        LinkedList l = new LinkedList();
+        l.prepend(3);
+        l.prepend(2);
+        l.prepend(1);
+        String s = "1 2 3 ";
+        assertEquals(s, l.toString());
+    }
+
+    @Test
+    public void testLength() {
+        LinkedList l = new LinkedList();
+        assertEquals(0, l.length());
+        l.prepend(3);
+        l.prepend(2);
+        l.prepend(1);
+        assertEquals(3, l.length());
+    }
 }
